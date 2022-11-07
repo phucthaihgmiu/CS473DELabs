@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MDP Quiz"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/tvQ1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. Kotlin is used in Android development?"
+            />
+        <RadioGroup
+            android:id="@+id/rgQ1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <RadioButton
+                android:id="@+id/rbQ1A"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:onClick="clickQ1RadioButton"
+            />
+
+            <RadioButton
+                android:id="@+id/rbQ1B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:onClick="clickQ1RadioButton"
+                />
+
+            <RadioButton
+                android:id="@+id/rbQ1C"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="I am not sure"
+                android:onClick="clickQ1RadioButton"
+                />
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/tvQ2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="2. var is different from val in Kotlin?"
+            />
+        <RadioGroup
+            android:id="@+id/rgQ2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <RadioButton
+                android:id="@+id/rbQ2A"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Yes"
+                android:onClick="clickQ2RadioButton"
+                />
+
+            <RadioButton
+                android:id="@+id/rbQ2B"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="No"
+                android:onClick="clickQ2RadioButton"
+                />
+
+            <RadioButton
+                android:id="@+id/rbQ2C"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="I am not sure"
+                android:onClick="clickQ2RadioButton"
+                />
+        </RadioGroup>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bottom"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:onClick="clickReset"
+            android:text="Reset"
+
+            android:layout_marginEnd="3dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <Button
+            android:onClick="clickSubmit"
+            android:text="Submit"
+            android:layout_marginStart="3dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+    </LinearLayout>
+</LinearLayout>

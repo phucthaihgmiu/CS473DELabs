@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Shopping App</string>
+
+    <string name="company">Company Name</string>
+    <string name="welcomeMsg">Welcome</string>
+
+    <string name="form_signin_title">Sign in to your account</string>
+    <string name="form_signin_email">Email (required)</string>
+    <string name="form_signin_password">Password (required)</string>
+    <string name="form_signin_btnSignin">Sign In</string>
+    <string name="form_signin_btnSignup">Create a new account</string>
+    <string name="form_signin_btnForgotPwd">Forgot password?</string>
+
+    <string name="form_signup_title">Create your account</string>
+    <string name="form_signup_fn">First name*</string>
+    <string name="form_signup_ln">Last name*</string>
+    <string name="form_signup_email">Email*</string>
+    <string name="form_signup_password">Password*</string>
+    <string name="form_signup_btnSignup">Create Account</string>
+</resources>
