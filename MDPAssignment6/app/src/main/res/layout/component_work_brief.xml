@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/cwb_logo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:contentDescription="@string/app_name"
+        android:scaleType="fitCenter" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="4dp"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/cwb_position"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Position"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/cwb_company"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Company Name"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/cwb_period"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Time Period"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/cwb_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Location"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/cwb_shortDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Short Desc"
+            android:textSize="12sp" />
+    </LinearLayout>
+</LinearLayout>
