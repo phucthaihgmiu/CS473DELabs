@@ -5,29 +5,33 @@
     android:clickable="true"
     android:focusable="true"
     android:orientation="horizontal"
-    android:padding="8dp">
+    android:layout_marginTop="@dimen/card_margin"
+    android:layout_marginBottom="@dimen/card_margin"
+    >
 
     <ImageView
         android:id="@+id/cwb_logo"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:contentDescription="@string/app_name"
+        android:layout_width="@dimen/company_logo_width"
+        android:layout_height="@dimen/company_logo_height"
         android:scaleType="fitCenter" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginEnd="4dp"
         android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingStart="@dimen/content_padding"
+        android:paddingEnd="@dimen/content_padding"
+        >
 
         <TextView
             android:id="@+id/cwb_position"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Position"
-            android:textSize="12sp" />
+            android:textSize="@dimen/h2_size"
+            android:textStyle="bold"
+            />
 
         <TextView
             android:id="@+id/cwb_company"
@@ -36,27 +40,27 @@
             android:ellipsize="end"
             android:maxLines="1"
             android:text="Company Name"
-            android:textSize="18sp" />
+            android:textSize="@dimen/h2_size" />
 
         <TextView
             android:id="@+id/cwb_period"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Time Period"
-            android:textSize="12sp" />
+            android:textSize="@dimen/h4_size" />
 
         <TextView
             android:id="@+id/cwb_location"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Location"
-            android:textSize="12sp" />
+            android:textSize="@dimen/h4_size" />
 
         <TextView
             android:id="@+id/cwb_shortDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Short Desc"
-            android:textSize="12sp" />
+            android:textSize="@dimen/h3_size" />
     </LinearLayout>
 </LinearLayout>

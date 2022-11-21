@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">MDPAssignment6</string>
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="profile_desc">Experienced COBOL Developer with 12 years of experience driving development of technical solutions that streamline processing and documentation of insurance policies and claims. Effective team member who analyzes requirements, troubleshoots technical issues, provides maintenance, and identifies solutions to enhance systems. Skilled in using technologies such as COBOL, JCL, CICS, CL, SQL, and Java.</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="card_career_note_title">Career Note</string>
+    <string name="card_skills_title">Skills</string>
+    <string name="card_about_me_title">About Me</string>
+    <string name="card_education_title">Education</string>
+    <string name="card_certification_title">Certification</string>
+    <string name="card_work_experience_title">Work Experience</string>
+    <string name="card_my_contacts_title">My Contacts</string>
+
 </resources>

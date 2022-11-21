@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/teal_200"
+    android:background="@color/main_background_1"
     tools:context=".ContactFragment">
 
     <ScrollView
@@ -14,20 +14,26 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="@dimen/content_padding"
+            >
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:cardCornerRadius="7dp"
-                app:cardElevation="22dp">
+                app:cardCornerRadius="@dimen/card_corner"
+                app:cardElevation="@dimen/card_evaluation"
+                android:layout_margin="@dimen/card_margin"
+                >
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:clickable="true"
                     android:focusable="true"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:padding="@dimen/content_padding"
+                    >
 
                     <TextView
                         android:layout_width="match_parent"
@@ -35,14 +41,19 @@
                         android:fontFamily="sans-serif-black"
                         android:gravity="center_vertical"
                         android:text="My Contacts"
-                        android:textSize="18sp" />
+                        android:textSize="@dimen/h1_size" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/fc_rv_contact"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:scrollbars="vertical"
-                        tools:listitem="@layout/component_contact" />
+                        tools:listitem="@layout/component_contact"
+                        android:paddingTop="@dimen/content_padding"
+                        android:paddingBottom="@dimen/content_padding"
+                        />
+
+
 
                 </LinearLayout>
 
