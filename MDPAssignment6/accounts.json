@@ -1,0 +1,54 @@
+[
+  {
+    "email":"phucthaihg@gmail.com",
+    "password":"123456",
+    "fullname":"Hong Phuc Thai",
+    "position":"Senior COBOL Developer",
+    "career_note":"Completed on-campus studies and currently taking distance education courses to complete a Master's Degree in Computer Science (Available for full-time, W-2 employment).",
+    "skills":[
+      {
+        "title":"Languages",
+        "content":"COBOL, JCL, CICS, CL, SQL, Java"
+      },
+      {
+        "title":"Web",
+        "content":"HTML, CSS, JavaScript, Node.JS, Angular, JSON, XML"
+      },
+      {
+        "title":"Web Services",
+        "content":"REST API, SOAP"
+      }
+    ],
+    "about_me":"Senior COBOL Developer with 12 years of experience in financial services. Experienced in all phases of the software development life cycle (SDLC). Strong problem solving, communication, and analytical skills. Excellent skills in technologies COBOL, Java, CICS, JCL, CL, RPGLE, SQL, DB2, Mainframe, AS400.",
+    "education":[
+      {
+        "logo":"R.drawable.miu",
+        "name":"Maharishi International University",
+        "degree":"Master of Computer Science"
+      }
+    ],
+    "certifications":[
+      {
+        "logo":"R.drawable.loma",
+        "title":"LOMA 280 — Principles of Insurance"
+      }
+    ],
+    "experiences":[
+      {
+        "logo":"R.drawable.prime",
+        "company":"PRIME CONSULTING SERVICES LTD",
+        "position":"Application Consultant",
+        "period":"2018 - 2022",
+        "location":"Singapore, Singapore",
+        "shortDesc":"Consulting service for information technology department at Prudential Assurance Singapore"
+      }
+    ],
+    "contact":[
+      {
+        "icon":"R.drawable.ic_baseline_phone_24",
+        "title":"641-819-2508",
+        "type":"Mobile"
+      }
+    ]
+  }
+]

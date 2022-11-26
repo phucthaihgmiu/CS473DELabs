@@ -2,7 +2,7 @@ package com.example.mdpassignment6.data
 
 import java.io.Serializable
 
-class Contact(
+data class Contact(
     var icon: Int,
     var title: String,
     var type: String

@@ -2,7 +2,7 @@ package com.example.mdpassignment6.data
 
 import java.io.Serializable
 
-class Skill(
+data class Skill(
     var title: String,
     var details: ArrayList<String>
 )
