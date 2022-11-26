@@ -22,20 +22,20 @@
     "about_me":"Senior COBOL Developer with 12 years of experience in financial services. Experienced in all phases of the software development life cycle (SDLC). Strong problem solving, communication, and analytical skills. Excellent skills in technologies COBOL, Java, CICS, JCL, CL, RPGLE, SQL, DB2, Mainframe, AS400.",
     "education":[
       {
-        "logo":"R.drawable.miu",
+        "logo":1,
         "name":"Maharishi International University",
         "degree":"Master of Computer Science"
       }
     ],
     "certifications":[
       {
-        "logo":"R.drawable.loma",
+        "logo":1,
         "title":"LOMA 280 — Principles of Insurance"
       }
     ],
     "experiences":[
       {
-        "logo":"R.drawable.prime",
+        "logo":1,
         "company":"PRIME CONSULTING SERVICES LTD",
         "position":"Application Consultant",
         "period":"2018 - 2022",
@@ -45,7 +45,7 @@
     ],
     "contact":[
       {
-        "icon":"R.drawable.ic_baseline_phone_24",
+        "icon":1,
         "title":"641-819-2508",
         "type":"Mobile"
       }
