@@ -1,17 +1,27 @@
 package com.example.mdpassignment6
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mdpassignment6.adapter.MySkillAdapter
-import com.example.mdpassignment6.data.Certification
-import com.example.mdpassignment6.data.Education
-import com.example.mdpassignment6.data.Skill
+import com.example.mdpassignment6.data.*
+import com.example.mdpassignment6.util.APIService
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.fragment_about.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class HomeFragment : Fragment() {
 
@@ -21,13 +31,17 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        skillList.add(Skill("Languages", arrayListOf("COBOL", "JCL", "CICS", "CL", "SQL", "Java")));
-        skillList.add(Skill("Web", arrayListOf("HTML", "CSS", "JavaScript", "Node.JS", "Angular", "JSON", "XML")));
-        skillList.add(Skill("Web Services", arrayListOf("REST API", "SOAP")));
+        parseAccountJSON();
 
+//        skillList.add(Skill("Languages", arrayListOf("COBOL", "JCL", "CICS", "CL", "SQL", "Java")));
+//        skillList.add(Skill("Web", arrayListOf("HTML", "CSS", "JavaScript", "Node.JS", "Angular", "JSON", "XML")));
+//        skillList.add(Skill("Web Services", arrayListOf("REST API", "SOAP")));
+//
         fh_rv_skill.layoutManager = LinearLayoutManager(context);
         skillAdapter = MySkillAdapter(requireContext(), skillList);
         fh_rv_skill.adapter = skillAdapter;
+
+
     }
     
     override fun onCreateView(
@@ -38,4 +52,63 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    private fun parseAccountJSON(){
+        // Create Retrofit
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://raw.githubusercontent.com")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+
+        // Create Service
+        val service = retrofit.create(APIService::class.java)
+        service.getAccounts().enqueue(object : Callback<List<Account>>{
+            override fun onResponse(
+                call: Call<List<Account>>,
+                response: Response<List<Account>>
+            ) {
+                val gson = GsonBuilder().setPrettyPrinting().create()
+                val prettyJson = gson.toJson(response.body())
+                Log.d("Pretty Printed JSON :", prettyJson)
+                val accounts = response.body()!!;
+                if(accounts != null){
+                    skillList = accounts[0].skills as ArrayList<Skill>;
+                    fh_rv_skill.layoutManager = LinearLayoutManager(context);
+                    skillAdapter = MySkillAdapter(requireContext(), skillList);
+//                    fh_rv_skill.adapter = skillAdapter;
+                    skillAdapter.notifyDataSetChanged();
+                }
+            }
+
+            override fun onFailure(call: Call<List<Account>>, t: Throwable) {
+                Log.e("RETROFIT_ERROR", "FAILURE TO LOAD JSON")
+            }
+
+        });
+    }
+
+//    private fun parseJSON2() {
+//        // Create Retrofit
+//        val retrofit = Retrofit.Builder()
+//            .baseUrl("https://raw.githubusercontent.com")
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//
+//        // Create Service
+//        val service = retrofit.create(APIService::class.java)
+//        service.getEmployees2().enqueue(object : Callback<List<ArrayJSONModel>>{
+//            override fun onResponse(
+//                call: Call<List<ArrayJSONModel>>,
+//                response: Response<List<ArrayJSONModel>>
+//            ) {
+//                val gson = GsonBuilder().setPrettyPrinting().create()
+//                val prettyJson = gson.toJson(response.body())
+//                Log.d("Pretty Printed JSON :", prettyJson)
+//            }
+//
+//            override fun onFailure(call: Call<List<ArrayJSONModel>>, t: Throwable) {
+//                Log.e("RETROFIT_ERROR", "FAILURE TO LOAD JSON")
+//            }
+//
+//        });
+//    }
 }

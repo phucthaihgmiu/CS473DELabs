@@ -8,15 +8,15 @@
     "skills":[
       {
         "title":"Languages",
-        "content":"COBOL, JCL, CICS, CL, SQL, Java"
+        "details":"COBOL, JCL, CICS, CL, SQL, Java"
       },
       {
         "title":"Web",
-        "content":"HTML, CSS, JavaScript, Node.JS, Angular, JSON, XML"
+        "details":"HTML, CSS, JavaScript, Node.JS, Angular, JSON, XML"
       },
       {
         "title":"Web Services",
-        "content":"REST API, SOAP"
+        "details":"REST API, SOAP"
       }
     ],
     "about_me":"Senior COBOL Developer with 12 years of experience in financial services. Experienced in all phases of the software development life cycle (SDLC). Strong problem solving, communication, and analytical skills. Excellent skills in technologies COBOL, Java, CICS, JCL, CL, RPGLE, SQL, DB2, Mainframe, AS400.",
