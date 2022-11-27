@@ -22,23 +22,23 @@
     "about_me":"Senior COBOL Developer with 12 years of experience in financial services. Experienced in all phases of the software development life cycle (SDLC). Strong problem solving, communication, and analytical skills. Excellent skills in technologies COBOL, Java, CICS, JCL, CL, RPGLE, SQL, DB2, Mainframe, AS400.",
     "education":[
       {
-        "logo":1,
+        "logo":"miu",
         "name":"Maharishi International University",
         "degree":"Master of Computer Science"
       },
       {
-        "logo":1,
+        "logo":"khtn",
         "name":"University of Science",
         "degree":"Bachelor of Computer Science"
       }
     ],
     "certifications":[
       {
-        "logo":1,
+        "logo":"loma",
         "title":"FLMI Level 1: Insurance Fundamentals"
       },
       {
-        "logo":1,
+        "logo":"theinstitutes",
         "title":"AINS 21 : Property and Liability Insurance Principles"
       }
     ],

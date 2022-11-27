@@ -3,7 +3,7 @@ package com.example.mdpassignment6.data
 import java.io.Serializable
 
 data class Certification(
-    var logo: Int,
+    var logo: String,
     var title: String
 )
     : Serializable {

@@ -3,7 +3,7 @@ package com.example.mdpassignment6.data
 import java.io.Serializable
 
 data class Education(
-    var logo: Int,
+    var logo: String,
     var name: String,
     var degree: String
 )

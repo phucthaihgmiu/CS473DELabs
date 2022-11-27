@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mdpassignment6.data.Education
 import kotlinx.android.synthetic.main.component_education_brief.view.*
+import kotlinx.android.synthetic.main.component_work_brief.view.*
 
 class MyEducationAdapter(var context: Context, val educationList: ArrayList<Education>
 ): RecyclerView.Adapter<MyEducationAdapter.MyViewHolder>() {
@@ -18,6 +19,7 @@ class MyEducationAdapter(var context: Context, val educationList: ArrayList<Educ
 
     override fun onBindViewHolder(holder: MyEducationAdapter.MyViewHolder, position: Int) {
 //        holder.itemView.ceb_logo.setBackgroundResource(educationList[position].logo);
+        holder.itemView.ceb_logo.setImageResource(context.getResources().getIdentifier("drawable/"+educationList[position].logo, null, context.getPackageName()));
         holder.itemView.ceb_name.text = educationList[position].name;
         holder.itemView.ceb_degree.text = educationList[position].degree;
     }

@@ -20,6 +20,8 @@ class MyCertificationAdapter(var context: Context, val certificationList: ArrayL
 
     override fun onBindViewHolder(holder: MyCertificationAdapter.MyViewHolder, position: Int) {
 //        holder.itemView.ccb_logo.setBackgroundResource(R.drawable.);
+        holder.itemView.ccb_logo.setImageResource(context.getResources().getIdentifier("drawable/"+certificationList[position].logo, null, context.getPackageName()));
+
         holder.itemView.ccb_title.text = certificationList[position].title;
     }
 

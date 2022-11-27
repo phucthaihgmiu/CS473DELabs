@@ -38,7 +38,7 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
         parseAccountJSON();
 
 ////       //Education degrees
-//        educationList.add(Education(R.drawable.miu, "Maharishi International University", "Master of Computer Science"));
+    //        educationList.add(Education(R.drawable.miu, "Maharishi International University", "Master of Computer Science"));
 //        educationList.add(Education(R.drawable.khtn, "University of Science", "Bachelor of Computer Science"));
 //        educationList.add(Education(R.drawable.khtn, "Nguyen Thuong Hien High School", "Diploma"));
 //
