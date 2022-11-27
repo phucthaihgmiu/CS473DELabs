@@ -85,7 +85,7 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
                 val prettyJson = gson.toJson(response.body())
                 Log.d("Pretty Printed JSON :", prettyJson)
                 val accounts = response.body()!!;
-                if(accounts != null){
+                if(accounts != null && accounts.size > 0){
                     //About Me
                     fa_about_me_detail.text = accounts[0].about_me;
 

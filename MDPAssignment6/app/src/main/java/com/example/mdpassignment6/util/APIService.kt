@@ -12,13 +12,6 @@ interface APIService {
     /*
        Array JSON
     */
-
-    @GET("/johncodeos-blog/ParseJSONRetrofitConvertersExample/main/array.json")
-    suspend fun getEmployees(): Response<List<ArrayJSONModel>>
-
-    @GET("/johncodeos-blog/ParseJSONRetrofitConvertersExample/main/array.json")
-    fun getEmployees2(): Call<List<ArrayJSONModel>>
-
-    @GET("/phucthaihgmiu/CS473DELabs/main/MDPAssignment6/accounts.json")
+    @GET("/phucthaihgmiu/CS473DELabs/main/MDPAssignment6/public/accounts.json")
     fun getAccounts(): Call<List<Account>>
  }
