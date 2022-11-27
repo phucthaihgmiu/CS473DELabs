@@ -66,7 +66,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-black"
                         android:gravity="center_vertical"
-                        android:text="Hong Phuc Thai"
+                        android:text="Full Name"
                         android:textSize="@dimen/h1_size" />
 
                     <TextView
@@ -75,7 +75,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-condensed-medium"
                         android:gravity="center_vertical"
-                        android:text="Senior COBOL Developer"
+                        android:text="Position"
                         android:textSize="@dimen/h2_size" />
                 </LinearLayout>
             </RelativeLayout>
