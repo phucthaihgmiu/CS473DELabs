@@ -11,6 +11,7 @@ import com.example.mdpassignment6.adapter.MySkillAdapter
 import com.example.mdpassignment6.data.*
 import com.example.mdpassignment6.util.APIService
 import com.google.gson.GsonBuilder
+import kotlinx.android.synthetic.main.component_education_brief.view.*
 import kotlinx.android.synthetic.main.fragment_about.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import kotlinx.coroutines.CoroutineScope
@@ -71,6 +72,11 @@ class HomeFragment : Fragment() {
 //                Log.d("Pretty Printed JSON :", prettyJson)
                 val accounts = response.body()!!;
                 if(accounts != null){
+                    fh_full_name.text = accounts[0].fullname;
+                    fh_position.text = accounts[0].fullname;
+                    fh_profile_image.setImageResource(context!!.resources!!.getIdentifier("drawable/"+accounts[0].avatar, null, context!!.packageName));
+
+
                     //Career Note
                     fh_career_note_details.text = accounts[0].career_note;
 

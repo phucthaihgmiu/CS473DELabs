@@ -11,5 +11,6 @@ data class Account(
     val fullname: String,
     val password: String,
     val position: String,
+    val avatar: String,
     val skills: List<Skill>
 )
