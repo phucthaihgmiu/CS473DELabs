@@ -26,8 +26,22 @@ class MyContactAdapter(var context: Context, val contactList: ArrayList<Contact>
 
     override fun onBindViewHolder(holder: MyContactAdapter.MyViewHolder, position: Int) {
 //        holder.itemView.cct_icon.setBackgroundResource(contactList[position].icon);
+
         holder.itemView.cct_title.text = contactList[position].title;
         holder.itemView.cct_type.text = contactList[position].type;
+
+        when(holder.itemView.cct_type.text) {
+            "Mobile" ->
+                holder.itemView.cct_icon.setBackgroundResource(R.drawable.ic_baseline_phone_24)
+            "Email" ->
+                holder.itemView.cct_icon.setBackgroundResource(R.drawable.ic_baseline_email_24)
+            "Linkedin" ->
+                holder.itemView.cct_icon.setBackgroundResource(R.drawable.linkedin)
+            "Github" ->
+                holder.itemView.cct_icon.setBackgroundResource(R.drawable.github)
+            "Resume Pdf" ->
+                holder.itemView.cct_icon.setBackgroundResource(R.drawable.ic_baseline_picture_as_pdf_24)
+        }
 
         holder.itemView.setOnClickListener{
             Toast.makeText(

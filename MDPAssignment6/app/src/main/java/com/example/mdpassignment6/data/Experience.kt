@@ -3,7 +3,7 @@ package com.example.mdpassignment6.data
 import java.io.Serializable
 
 data class Experience(
-    var logo: Int,
+    var logo: String,
     var company: String,
     var position: String,
     var period: String,

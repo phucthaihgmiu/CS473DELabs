@@ -81,9 +81,9 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
                 call: Call<List<Account>>,
                 response: Response<List<Account>>
             ) {
-                val gson = GsonBuilder().setPrettyPrinting().create()
-                val prettyJson = gson.toJson(response.body())
-                Log.d("Pretty Printed JSON :", prettyJson)
+//                val gson = GsonBuilder().setPrettyPrinting().create()
+//                val prettyJson = gson.toJson(response.body())
+//                Log.d("Pretty Printed JSON :", prettyJson)
                 val accounts = response.body()!!;
                 if(accounts != null && accounts.size > 0){
                     //About Me
