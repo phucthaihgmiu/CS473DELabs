@@ -18,7 +18,7 @@ class MySkillAdapter(var context: Context, val skillList: ArrayList<Skill>
 
     override fun onBindViewHolder(holder: MySkillAdapter.MyViewHolder, position: Int) {
         holder.itemView.csk_title.text = skillList[position].title + " : ";
-        holder.itemView.csk_details.text = skillList[position].details.joinToString(", ");
+        holder.itemView.csk_details.text = skillList[position].details;
     }
 
     override fun getItemCount(): Int {

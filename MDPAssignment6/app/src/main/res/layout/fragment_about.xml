@@ -37,6 +37,7 @@
                     >
 
                     <TextView
+                        android:id="@+id/fa_about_me_header"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif-black"
@@ -54,9 +55,10 @@
                         >
 
                         <TextView
+                            android:id="@+id/fa_about_me_detail"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/profile_desc"
+                            android:text="test"
                             android:textSize="@dimen/h2_size" />
                     </LinearLayout>
                 </LinearLayout>

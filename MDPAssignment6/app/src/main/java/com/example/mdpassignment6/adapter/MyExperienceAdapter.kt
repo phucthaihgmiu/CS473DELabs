@@ -17,7 +17,7 @@ class MyExperienceAdapter(var context: Context, val experienceList: ArrayList<Ex
     }
 
     override fun onBindViewHolder(holder: MyExperienceAdapter.MyViewHolder, position: Int) {
-        holder.itemView.cwb_logo.setBackgroundResource(experienceList[position].logo);
+//        holder.itemView.cwb_logo.setBackgroundResource(experienceList[position].logo);
         holder.itemView.cwb_company.text = experienceList[position].company;
         holder.itemView.cwb_position.text = experienceList[position].position;
         holder.itemView.cwb_period.text = experienceList[position].period;

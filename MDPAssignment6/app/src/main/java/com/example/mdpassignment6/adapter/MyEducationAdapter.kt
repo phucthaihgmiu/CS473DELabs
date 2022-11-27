@@ -17,7 +17,7 @@ class MyEducationAdapter(var context: Context, val educationList: ArrayList<Educ
     }
 
     override fun onBindViewHolder(holder: MyEducationAdapter.MyViewHolder, position: Int) {
-        holder.itemView.ceb_logo.setBackgroundResource(educationList[position].logo);
+//        holder.itemView.ceb_logo.setBackgroundResource(educationList[position].logo);
         holder.itemView.ceb_name.text = educationList[position].name;
         holder.itemView.ceb_degree.text = educationList[position].degree;
     }

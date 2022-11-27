@@ -37,9 +37,9 @@ class HomeFragment : Fragment() {
 //        skillList.add(Skill("Web", arrayListOf("HTML", "CSS", "JavaScript", "Node.JS", "Angular", "JSON", "XML")));
 //        skillList.add(Skill("Web Services", arrayListOf("REST API", "SOAP")));
 //
-        fh_rv_skill.layoutManager = LinearLayoutManager(context);
-        skillAdapter = MySkillAdapter(requireContext(), skillList);
-        fh_rv_skill.adapter = skillAdapter;
+//        fh_rv_skill.layoutManager = LinearLayoutManager(context);
+//        skillAdapter = MySkillAdapter(requireContext(), skillList);
+//        fh_rv_skill.adapter = skillAdapter;
 
 
     }
@@ -66,17 +66,21 @@ class HomeFragment : Fragment() {
                 call: Call<List<Account>>,
                 response: Response<List<Account>>
             ) {
-                val gson = GsonBuilder().setPrettyPrinting().create()
-                val prettyJson = gson.toJson(response.body())
-                Log.d("Pretty Printed JSON :", prettyJson)
+//                val gson = GsonBuilder().setPrettyPrinting().create()
+//                val prettyJson = gson.toJson(response.body())
+//                Log.d("Pretty Printed JSON :", prettyJson)
                 val accounts = response.body()!!;
                 if(accounts != null){
+                    //Career Note
+                    fh_career_note_details.text = accounts[0].career_note;
+
+                    //Skills
                     skillList = accounts[0].skills as ArrayList<Skill>;
                     fh_rv_skill.layoutManager = LinearLayoutManager(context);
                     skillAdapter = MySkillAdapter(requireContext(), skillList);
-//                    fh_rv_skill.adapter = skillAdapter;
                     skillAdapter.notifyDataSetChanged();
                 }
+                fh_rv_skill.adapter = skillAdapter;
             }
 
             override fun onFailure(call: Call<List<Account>>, t: Throwable) {
@@ -85,30 +89,4 @@ class HomeFragment : Fragment() {
 
         });
     }
-
-//    private fun parseJSON2() {
-//        // Create Retrofit
-//        val retrofit = Retrofit.Builder()
-//            .baseUrl("https://raw.githubusercontent.com")
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//
-//        // Create Service
-//        val service = retrofit.create(APIService::class.java)
-//        service.getEmployees2().enqueue(object : Callback<List<ArrayJSONModel>>{
-//            override fun onResponse(
-//                call: Call<List<ArrayJSONModel>>,
-//                response: Response<List<ArrayJSONModel>>
-//            ) {
-//                val gson = GsonBuilder().setPrettyPrinting().create()
-//                val prettyJson = gson.toJson(response.body())
-//                Log.d("Pretty Printed JSON :", prettyJson)
-//            }
-//
-//            override fun onFailure(call: Call<List<ArrayJSONModel>>, t: Throwable) {
-//                Log.e("RETROFIT_ERROR", "FAILURE TO LOAD JSON")
-//            }
-//
-//        });
-//    }
 }

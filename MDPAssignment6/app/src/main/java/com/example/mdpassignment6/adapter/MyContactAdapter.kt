@@ -25,7 +25,7 @@ class MyContactAdapter(var context: Context, val contactList: ArrayList<Contact>
     }
 
     override fun onBindViewHolder(holder: MyContactAdapter.MyViewHolder, position: Int) {
-        holder.itemView.cct_icon.setBackgroundResource(contactList[position].icon);
+//        holder.itemView.cct_icon.setBackgroundResource(contactList[position].icon);
         holder.itemView.cct_title.text = contactList[position].title;
         holder.itemView.cct_type.text = contactList[position].type;
 

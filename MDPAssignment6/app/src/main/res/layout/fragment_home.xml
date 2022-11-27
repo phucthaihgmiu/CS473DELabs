@@ -106,6 +106,7 @@
                         >
 
                         <TextView
+                            android:id="@+id/fh_career_note_header"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
@@ -123,9 +124,10 @@
                             >
 
                             <TextView
+                                android:id="@+id/fh_career_note_details"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Completed on-campus studies and currently taking distance education courses to complete a Master's Degree in Computer Science (Available for full-time, W-2 employment)."
+                                android:text="Test"
                                 android:textSize="@dimen/h2_size" />
                         </LinearLayout>
                     </LinearLayout>

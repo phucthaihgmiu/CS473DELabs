@@ -1,0 +1,123 @@
+[
+  {
+    "email":"phucthaihg@gmail.com",
+    "password":"123456",
+    "fullname":"Hong Phuc Thai",
+    "position":"Senior COBOL Developer",
+    "career_note":"Completed on-campus studies and currently taking distance education courses to complete a Master's Degree in Computer Science (Available for full-time, W-2 employment).",
+    "skills":[
+      {
+        "title":"Languages",
+        "details":"COBOL, JCL, CICS, CL, SQL, Java"
+      },
+      {
+        "title":"Web",
+        "details":"HTML, CSS, JavaScript, Node.JS, Angular, JSON, XML"
+      },
+      {
+        "title":"Web Services",
+        "details":"REST API, SOAP"
+      }
+    ],
+    "about_me":"Senior COBOL Developer with 12 years of experience in financial services. Experienced in all phases of the software development life cycle (SDLC). Strong problem solving, communication, and analytical skills. Excellent skills in technologies COBOL, Java, CICS, JCL, CL, RPGLE, SQL, DB2, Mainframe, AS400.",
+    "education":[
+      {
+        "logo":1,
+        "name":"Maharishi International University",
+        "degree":"Master of Computer Science"
+      },
+      {
+        "logo":1,
+        "name":"University of Science",
+        "degree":"Bachelor of Computer Science"
+      }
+    ],
+    "certifications":[
+      {
+        "logo":1,
+        "title":"FLMI Level 1: Insurance Fundamentals"
+      },
+      {
+        "logo":1,
+        "title":"AINS 21 : Property and Liability Insurance Principles"
+      }
+    ],
+    "experiences":[
+      {
+        "logo":1,
+        "company":"PRIME CONSULTING SERVICES LTD",
+        "position":"Technical Analyst",
+        "period":"2018 - 2022",
+        "location":"Singapore, Singapore",
+        "shortDesc":"Consulting service for information technology department at Prudential Assurance Singapore"
+      },
+      {
+        "logo":1,
+        "company":"AIA",
+        "position":"Technical Analyst",
+        "period":"2017 - 2018",
+        "location":"Singapore, Singapore",
+        "shortDesc":"Implemented system improvements for core insurance software with COBOL on AS400 / iSeries in various departments including New Business, Policy Services, Contract Billing, Claim, and Finance."
+      },
+      {
+        "logo":1,
+        "company":"U3 Infotech",
+        "position":"Technical Analyst",
+        "period":"2016 - 2017",
+        "location":"Singapore, Singapore",
+        "shortDesc":"Staffing companies for information technology department at AVIVA ASIA PTE LTD Singapore, a multinational insurance and investment service corporation."
+      },
+      {
+        "logo":1,
+        "company":"GMA Tech Consulting",
+        "position":"Technical Analyst",
+        "period":"2015 - 2016",
+        "location":"Kuala Lumpur, Malaysia",
+        "shortDesc":"Staffing company for information technology department at GREAT EASTERN LIFE, a multinational finance and insurance corporation."
+      },
+      {
+        "logo":1,
+        "company":"DXC Technology",
+        "position":"Senior Software Engineer",
+        "period":"2010 - 2015",
+        "location":"Ho Chi Minh City, Vietnam",
+        "shortDesc":"Provided maintenance to enhance core insurance and core banking software systems for various clients."
+      },
+      {
+        "logo":1,
+        "company":"Capgemini",
+        "position":"Software Engineer",
+        "period":"2009 - 2010",
+        "location":"Ho Chi Minh City, Vietnam",
+        "shortDesc":"Enhanced core insurance software system for AXA Finance."
+      }
+    ],
+    "contact":[
+      {
+        "icon":1,
+        "title":"641-819-2508",
+        "type":"Mobile"
+      },
+      {
+        "icon":1,
+        "title":"phucthaihg@gmail.com",
+        "type":"Email"
+      },
+      {
+        "icon":1,
+        "title":"https://www.linkedin.com/in/phucthaihg/",
+        "type":"Linkedin"
+      },
+      {
+        "icon":1,
+        "title":"https://github.com/phucthaihgmiu/CS473DELabs",
+        "type":"Github"
+      },
+      {
+        "icon":1,
+        "title":"Resume",
+        "type":"Resume Pdf"
+      }
+    ]
+  }
+]
