@@ -120,5 +120,103 @@
         "type":"Resume Pdf"
       }
     ]
+  },
+  {
+    "email":"tanmai@gmail.com",
+    "password":"123",
+    "fullname":"Tan Mai",
+    "position":"Senior Java Software Engineer ",
+    "avatar": "tm",
+    "career_note":"Completed on-campus studies and currently taking distance education courses to complete a Master's Degree in Computer Science (Available for full-time, W-2 employment).",
+    "skills":[
+      {
+        "title":"Languages",
+        "details":"Java, Scala"
+      },
+      {
+        "title":"Web",
+        "details":"JavaScript, TypeScript, HTML5, CSS3, Bootstrap"
+      },
+      {
+        "title":"Web Services",
+        "details":"REST API, JSON, gRPC"
+      }
+    ],
+    "about_me":"Skilled software engineer with 8+ years of experience in software design and development using\nAgile/Scrum, Java, JavaScript, Spring, Hibernate, Angular, and React. Proven history of successful\ncontributions to both start-ups and major companies, implementing complex distributed systems which use Microservices and Cloud Native to ensure scalability and reliability.",
+    "education":[
+      {
+        "logo":"miu",
+        "name":"Maharishi International University",
+        "degree":"Master of Computer Science"
+      },
+      {
+        "logo":"fpt",
+        "name":"FPT University",
+        "degree":"Bachelor of Engineering"
+      }
+    ],
+    "certifications":[
+      {
+        "logo":"na",
+        "title":"Critical Professional Skills For Success"
+      },
+      {
+        "logo":"na",
+        "title":"Fit for Scrum"
+      }
+    ],
+    "experiences":[
+      {
+        "logo":"axon",
+        "company":"Axon",
+        "position":"Senior Software Engineer, Technical Lead",
+        "period":"2020 - 2022",
+        "location":"HCM, Viet Nam",
+        "shortDesc":"Built a real-time operation platform and a CAD system."
+      },
+      {
+        "logo":"axon",
+        "company":"Axon",
+        "position":"Senior Software Engineer - AI team",
+        "period":"2018 - 2020",
+        "location":"HCM Viet Nam",
+        "shortDesc":"Performed design and development tasks and used microservices to build a data pipeline."
+      },
+      {
+        "logo":"bosch",
+        "company":"Robert Bosch Engineering and Business Solutions Vietnam",
+        "position":"Software Engineer",
+        "period":"2014 - 2018",
+        "location":"HCM Viet Nam",
+        "shortDesc":"Key contributor to software development tasks using scrum model."
+      }
+    ],
+    "contact":[
+      {
+        "icon":1,
+        "title":"641-819-2509",
+        "type":"Mobile"
+      },
+      {
+        "icon":1,
+        "title":"tanmai@gmail.com",
+        "type":"Email"
+      },
+      {
+        "icon":1,
+        "title":"https://www.linkedin.com/in/tanmaijob/",
+        "type":"Linkedin"
+      },
+      {
+        "icon":1,
+        "title":"https://github.com/tanmaijob/CS473DELabs",
+        "type":"Github"
+      },
+      {
+        "icon":1,
+        "title":"Resume",
+        "type":"Resume Pdf"
+      }
+    ]
   }
 ]
