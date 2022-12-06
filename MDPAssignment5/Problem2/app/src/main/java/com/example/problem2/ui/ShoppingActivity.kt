@@ -19,7 +19,21 @@ class ShoppingActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_shopping);
-        val user: User? = intent.getSerializableExtra("user") as User?;
+        val temp = intent.getSerializableExtra("user");
+        val newUser:User = temp as User;
+
+        val number = 1;
+        val text: String = when(number){
+            1-> "one"
+            2-> "two"
+            3-> "three"
+            else -> "others"
+        }
+
+        val ob: Any = "hello"
+
+
+        val user: User = intent.getSerializableExtra("user") as User;
         tvWelcome.text = "Welcome ${user?.username}";
     }
 

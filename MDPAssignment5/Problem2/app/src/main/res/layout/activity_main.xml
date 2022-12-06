@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="email"
-                android:inputType="textEmailAddress"
+                android:inputType="textShortMessage"
                 android:layout_marginTop="10dp"
                 android:textSize="18sp"
                 android:background="@drawable/input_bg_curved_grey"

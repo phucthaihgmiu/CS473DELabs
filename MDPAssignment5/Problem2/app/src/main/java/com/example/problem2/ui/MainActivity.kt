@@ -58,6 +58,8 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    fun calc(l: Double, h: Double): Double = l * h;
+
     fun clickSignup(view: View){
         startActivity(Intent(this, RegisterActivity::class.java));
     }

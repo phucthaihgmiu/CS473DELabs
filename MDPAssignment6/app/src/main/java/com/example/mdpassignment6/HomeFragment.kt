@@ -1,5 +1,6 @@
 package com.example.mdpassignment6
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.viewbinding.ViewBinding
 import com.example.mdpassignment6.adapter.MySkillAdapter
 import com.example.mdpassignment6.data.*
 import com.example.mdpassignment6.util.APIService
@@ -29,9 +31,16 @@ class HomeFragment : Fragment() {
     private var skillList = ArrayList<Skill>();
     private lateinit var skillAdapter: MySkillAdapter;
 
+    
+    private var username = "";
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+
+
+        val spf = context?.getSharedPreferences("myspf", Context.MODE_PRIVATE);
+        username = spf?.getString("username", "")!!;
         parseAccountJSON();
 
 //        skillList.add(Skill("Languages", arrayListOf("COBOL", "JCL", "CICS", "CL", "SQL", "Java")));
@@ -72,19 +81,22 @@ class HomeFragment : Fragment() {
 //                Log.d("Pretty Printed JSON :", prettyJson)
                 val accounts = response.body()!!;
                 if(accounts != null){
-                    fh_full_name.text = accounts[0].fullname;
-                    fh_position.text = accounts[0].fullname;
-                    fh_profile_image.setImageResource(context!!.resources!!.getIdentifier("drawable/"+accounts[0].avatar, null, context!!.packageName));
+                    for(account in accounts){
+                        if(!username.isNullOrEmpty() && account.email.equals(username)){
+                            fh_full_name.text = account.fullname;
+                            fh_position.text = account.fullname;
+                            fh_profile_image.setImageResource(context!!.resources!!.getIdentifier("drawable/"+accounts[0].avatar, null, context!!.packageName));
 
+                            //Career Note
+                            fh_career_note_details.text = account.career_note;
 
-                    //Career Note
-                    fh_career_note_details.text = accounts[0].career_note;
-
-                    //Skills
-                    skillList = accounts[0].skills as ArrayList<Skill>;
-                    fh_rv_skill.layoutManager = LinearLayoutManager(context);
-                    skillAdapter = MySkillAdapter(requireContext(), skillList);
-                    skillAdapter.notifyDataSetChanged();
+                            //Skills
+                            skillList = account.skills as ArrayList<Skill>;
+                            fh_rv_skill.layoutManager = LinearLayoutManager(context);
+                            skillAdapter = MySkillAdapter(requireContext(), skillList);
+                            skillAdapter.notifyDataSetChanged();
+                        }
+                    }
                 }
                 fh_rv_skill.adapter = skillAdapter;
             }

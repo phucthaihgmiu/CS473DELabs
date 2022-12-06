@@ -6,7 +6,7 @@ import java.io.Serializable
 
 class User(var firstname: String?, var lastname:String?, var username:String, var password:String)
     :Serializable {
-        override fun toString(): String{
-            return "User(firstname=${firstname}, lastname=${lastname}, username=${username})";
-        }
+    override fun toString(): String{
+        return "User(firstname=${firstname}, lastname=${lastname}, username=${username})";
+    }
 }

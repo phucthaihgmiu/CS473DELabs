@@ -1,5 +1,23 @@
 <resources>
     <string name="app_name">MDPAssignment6</string>
+
+    <string name="company">Company Name</string>
+    <string name="welcomeMsg">Welcome</string>
+
+    <string name="form_signin_title">Sign in to your account</string>
+    <string name="form_signin_email">Email (required)</string>
+    <string name="form_signin_password">Password (required)</string>
+    <string name="form_signin_btnSignin">Sign In</string>
+    <string name="form_signin_btnSignup">Create a new account</string>
+    <string name="form_signin_btnForgotPwd">Forgot password?</string>
+
+    <string name="form_signup_title">Create your account</string>
+    <string name="form_signup_fn">First name*</string>
+    <string name="form_signup_ln">Last name*</string>
+    <string name="form_signup_email">Email*</string>
+    <string name="form_signup_password">Password*</string>
+    <string name="form_signup_btnSignup">Create Account</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="profile_desc">Experienced COBOL Developer with 12 years of experience driving development of technical solutions that streamline processing and documentation of insurance policies and claims. Effective team member who analyzes requirements, troubleshoots technical issues, provides maintenance, and identifies solutions to enhance systems. Skilled in using technologies such as COBOL, JCL, CICS, CL, SQL, and Java.</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
@@ -10,5 +28,14 @@
     <string name="card_certification_title">Certification</string>
     <string name="card_work_experience_title">Work Experience</string>
     <string name="card_my_contacts_title">My Contacts</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Not a valid username</string>
+    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="login_failed">"Login failed"</string>
 
 </resources>

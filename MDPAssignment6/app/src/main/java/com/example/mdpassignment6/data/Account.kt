@@ -14,3 +14,4 @@ data class Account(
     val avatar: String,
     val skills: List<Skill>
 )
+
