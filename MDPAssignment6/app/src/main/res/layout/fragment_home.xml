@@ -32,23 +32,23 @@
                     android:scaleType="centerCrop"
                     android:src="@drawable/banner" />
 
-                <!--de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/profile_image"
+                <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/fh_profile_image"
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     android:layout_centerVertical="true"
                     android:src="@drawable/profile"
                     app:civ_border_color="#fff"
                     app:civ_border_width="5dp"
-                    /-->
+                    />
 
-                <ImageView
+                <!--ImageView
                     android:id="@+id/fh_profile_image"
                     android:layout_width="@dimen/avatar_width"
                     android:layout_height="@dimen/avatar_height"
                     android:layout_centerVertical="true"
                     android:src="@drawable/profile"
-                    />
+                    /-->
 
                 <LinearLayout
                     android:layout_width="match_parent"

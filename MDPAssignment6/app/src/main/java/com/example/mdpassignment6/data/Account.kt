@@ -12,6 +12,7 @@ data class Account(
     val password: String,
     val position: String,
     val avatar: String,
-    val skills: List<Skill>
+    val skills: List<Skill>,
+    var isActive: Boolean
 )
 

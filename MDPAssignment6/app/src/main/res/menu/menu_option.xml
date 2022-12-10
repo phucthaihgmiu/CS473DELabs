@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <!--name space is needed to use app:showAsAction="ifRoom“-->
+    <item
+        android:id="@+id/om_signout"
+        android:title="Sign out"
+        app:showAsAction="ifRoom"/>
+
+    <item
+        android:id="@+id/om_deleteAccount"
+        android:title="Delete Account"
+        app:showAsAction="never"/>
+
+    <!-- Here app is name space name which is defined in the menu header part-->
+</menu>

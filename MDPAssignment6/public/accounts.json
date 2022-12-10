@@ -2,6 +2,7 @@
   {
     "email":"phucthaihg@gmail.com",
     "password":"123456",
+    "isActive": true,
     "fullname":"Hong Phuc Thai",
     "position":"Senior COBOL Developer",
     "avatar": "hpt",
@@ -124,6 +125,7 @@
   {
     "email":"tanmai@gmail.com",
     "password":"123",
+    "isActive": true,
     "fullname":"Tan Mai",
     "position":"Senior Java Software Engineer ",
     "avatar": "tm",

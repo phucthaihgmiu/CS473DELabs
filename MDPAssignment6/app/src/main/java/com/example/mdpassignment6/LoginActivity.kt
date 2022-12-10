@@ -2,19 +2,16 @@ package com.example.mdpassignment6
 
 import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mdpassignment6.adapter.MySkillAdapter
-import com.example.mdpassignment6.data.Account
-import com.example.mdpassignment6.data.Skill
-import com.example.mdpassignment6.util.APIService
+import com.example.mdpassignment6.data.*
+import com.example.mdpassignment6.util.RestApi
+import com.example.mdpassignment6.util.RestApiService
+import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_login.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,11 +21,12 @@ import retrofit2.converter.gson.GsonConverterFactory
 class LoginActivity : AppCompatActivity() {
     var accounts:List<Account> = emptyList();
 
+    private var username = "";
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        parseAccountJSON();
+        getAccounts();
     }
 
     fun clickSignIn(view: View) {
@@ -48,8 +46,6 @@ class LoginActivity : AppCompatActivity() {
         for (account in accounts) {
             if (account.email.equals(username) && account.password.equals(password)) {
                 foundUser = true;
-
-                Toast.makeText(this, "Found user", Toast.LENGTH_LONG).show();
 
                 val spf = getSharedPreferences("myspf", Context.MODE_PRIVATE);
                 val spe = spf.edit();
@@ -74,31 +70,32 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    private fun parseAccountJSON(){
-        // Create Retrofit
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://raw.githubusercontent.com")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+    private fun defaultLastUser() {
 
-        // Create Service
-        val service = retrofit.create(APIService::class.java)
-        service.getAccounts().enqueue(object : Callback<List<Account>> {
-            override fun onResponse(
-                call: Call<List<Account>>,
-                response: Response<List<Account>>
-            ) {
-//                val gson = GsonBuilder().setPrettyPrinting().create()
-//                val prettyJson = gson.toJson(response.body())
-//                Log.d("Pretty Printed JSON :", prettyJson)
-                 accounts = response.body()!!;
+        val spf = applicationContext?.getSharedPreferences("myspf", Context.MODE_PRIVATE);
+        username = spf?.getString("username", "")!!;
 
+        if(!username.isNullOrBlank() && accounts != null && accounts.size > 0) {
+            var foundUser = false;
+            for (account in accounts) {
+                if (account.email.equals(username)) {
+                    etEmail.setText(account.email);
+                    etPwd.setText(account.password);
+                    break;
+                }
             }
+        }
+    }
 
-            override fun onFailure(call: Call<List<Account>>, t: Throwable) {
-                Log.e("RETROFIT_ERROR", "FAILURE TO LOAD JSON")
+    private fun getAccounts(){
+        val apiService = RestApiService()
+        apiService.getAccounts (){
+            if(it != null){
+                accounts = it.filter { account ->  account.isActive};
+                defaultLastUser();
+            }else{
+                Log.e("RETROFIT_ERROR", "FAILURE TO GET ACCOUNT")
             }
-
-        });
+        }
     }
 }

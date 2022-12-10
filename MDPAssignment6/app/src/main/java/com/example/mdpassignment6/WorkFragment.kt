@@ -1,5 +1,6 @@
 package com.example.mdpassignment6
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -8,12 +9,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.mdpassignment6.data.Account
-import com.example.mdpassignment6.data.Certification
-import com.example.mdpassignment6.data.Education
 import com.example.mdpassignment6.data.Experience
-import com.example.mdpassignment6.util.APIService
+import com.example.mdpassignment6.util.RestApi
+import com.example.mdpassignment6.util.RestApiService
 import com.google.gson.GsonBuilder
-import kotlinx.android.synthetic.main.fragment_about.*
 import kotlinx.android.synthetic.main.fragment_work.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,10 +25,14 @@ class WorkFragment : Fragment() {
     private var workExperienceList = ArrayList<Experience>();
     private lateinit var workExperienceAdapter: MyExperienceAdapter;
 
+    private var username = "";
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        parseAccountJSON();
+        val spf = context?.getSharedPreferences("myspf", Context.MODE_PRIVATE);
+        username = spf?.getString("username", "")!!;
+        getAccounts();
 
 ////       //Education degrees
 //        workExperienceList.add(Experience(R.drawable.prime, "PRIME CONSULTING SERVICES LTD", "Application Consultant", "2018 - 2022", "Singapore, Singapore", "Consulting service for information technology department at Prudential Assurance Singapore"));
@@ -53,38 +56,23 @@ class WorkFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_work, container, false)
     }
 
-    private fun parseAccountJSON(){
-        // Create Retrofit
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://raw.githubusercontent.com")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        // Create Service
-        val service = retrofit.create(APIService::class.java)
-        service.getAccounts().enqueue(object : Callback<List<Account>> {
-            override fun onResponse(
-                call: Call<List<Account>>,
-                response: Response<List<Account>>
-            ) {
-                val gson = GsonBuilder().setPrettyPrinting().create()
-                val prettyJson = gson.toJson(response.body())
-                Log.d("Pretty Printed JSON :", prettyJson)
-                val accounts = response.body()!!;
-                if(accounts != null){
-                    //Experiences
-                    workExperienceList = accounts[0].experiences as ArrayList<Experience>;
-                    fw_rv_experience.layoutManager = LinearLayoutManager(context);
-                    workExperienceAdapter = MyExperienceAdapter(requireContext(), workExperienceList);
-
+    private fun getAccounts(){
+        val apiService = RestApiService()
+        apiService.getAccounts (){
+            if(it != null){
+                val accounts = it.filter { account -> account.isActive };
+                for(account in accounts){
+                    if(!username.isNullOrEmpty() && account.email.equals(username)){
+                        //Experiences
+                        workExperienceList = account.experiences as ArrayList<Experience>;
+                        fw_rv_experience.layoutManager = LinearLayoutManager(context);
+                        workExperienceAdapter = MyExperienceAdapter(requireContext(), workExperienceList);
+                    }
                 }
                 fw_rv_experience.adapter = workExperienceAdapter;
+            }else{
+                Log.e("RETROFIT_ERROR", "FAILURE TO GET ACCOUNT")
             }
-
-            override fun onFailure(call: Call<List<Account>>, t: Throwable) {
-                Log.e("RETROFIT_ERROR", "FAILURE TO LOAD JSON")
-            }
-
-        });
+        }
     }
 }

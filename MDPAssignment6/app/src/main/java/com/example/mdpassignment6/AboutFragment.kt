@@ -1,5 +1,6 @@
 package com.example.mdpassignment6
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,16 +8,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.mdpassignment6.adapter.MySkillAdapter
 import com.example.mdpassignment6.data.Account
 import com.example.mdpassignment6.data.Certification
 import com.example.mdpassignment6.data.Education
-import com.example.mdpassignment6.data.Skill
-import com.example.mdpassignment6.util.APIService
-import com.google.gson.GsonBuilder
+import com.example.mdpassignment6.util.RestApi
+import com.example.mdpassignment6.util.RestApiService
 import kotlinx.android.synthetic.main.fragment_about.*
-import kotlinx.android.synthetic.main.fragment_home.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,10 +29,13 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
     private var certicationList = ArrayList<Certification>();
     private lateinit var certificationAdapter: MyCertificationAdapter;
 
+    private var username = "";
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        parseAccountJSON();
+        val spf = context?.getSharedPreferences("myspf", Context.MODE_PRIVATE);
+        username = spf?.getString("username", "")!!;
+        getAccounts();
 
 ////       //Education degrees
     //        educationList.add(Education(R.drawable.miu, "Maharishi International University", "Master of Computer Science"));
@@ -67,49 +67,34 @@ class AboutFragment : Fragment(R.layout.fragment_about) {
         return inflater.inflate(R.layout.fragment_about, container, false)
     }
 
-    private fun parseAccountJSON(){
-        // Create Retrofit
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://raw.githubusercontent.com")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+    private fun getAccounts(){
+        val apiService = RestApiService()
+        apiService.getAccounts (){
+            if(it != null){
+                val accounts = it.filter { account -> account.isActive };
+                for(account in accounts){
+                    if(!username.isNullOrEmpty() && account.email.equals(username)){
+                        //About Me
+                        fa_about_me_detail.text = account.about_me;
 
-        // Create Service
-        val service = retrofit.create(APIService::class.java)
-        service.getAccounts().enqueue(object : Callback<List<Account>> {
-            override fun onResponse(
-                call: Call<List<Account>>,
-                response: Response<List<Account>>
-            ) {
-//                val gson = GsonBuilder().setPrettyPrinting().create()
-//                val prettyJson = gson.toJson(response.body())
-//                Log.d("Pretty Printed JSON :", prettyJson)
-                val accounts = response.body()!!;
-                if(accounts != null && accounts.size > 0){
-                    //About Me
-                    fa_about_me_detail.text = accounts[0].about_me;
+                        //Education degrees
+                        educationList = account.education as ArrayList<Education>;
+                        fa_rv_education.layoutManager = LinearLayoutManager(context);
+                        educationAdapter = MyEducationAdapter(requireContext(), educationList);
+                        educationAdapter.notifyDataSetChanged();
 
-                    //Education degrees
-                    educationList = accounts[0].education as ArrayList<Education>;
-                    fa_rv_education.layoutManager = LinearLayoutManager(context);
-                    educationAdapter = MyEducationAdapter(requireContext(), educationList);
-                    educationAdapter.notifyDataSetChanged();
-
-
-                    //Certifications
-                    certicationList = accounts[0].certifications as ArrayList<Certification>;
-                    fa_rv_certification.layoutManager = LinearLayoutManager(context);
-                    certificationAdapter = MyCertificationAdapter(requireContext(), certicationList);
-                    certificationAdapter.notifyDataSetChanged();
+                        //Certifications
+                        certicationList = account.certifications as ArrayList<Certification>;
+                        fa_rv_certification.layoutManager = LinearLayoutManager(context);
+                        certificationAdapter = MyCertificationAdapter(requireContext(), certicationList);
+                        certificationAdapter.notifyDataSetChanged();
+                    }
                 }
                 fa_rv_education.adapter = educationAdapter;
                 fa_rv_certification.adapter = certificationAdapter;
+            }else{
+                Log.e("RETROFIT_ERROR", "FAILURE TO GET ACCOUNT")
             }
-
-            override fun onFailure(call: Call<List<Account>>, t: Throwable) {
-                Log.e("RETROFIT_ERROR", "FAILURE TO LOAD JSON")
-            }
-
-        });
+        }
     }
 }

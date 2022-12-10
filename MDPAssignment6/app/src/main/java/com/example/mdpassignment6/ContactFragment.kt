@@ -1,20 +1,18 @@
 package com.example.mdpassignment6
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
-import android.view.ContextMenu
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.mdpassignment6.data.Account
-import com.example.mdpassignment6.data.Contact
-import com.example.mdpassignment6.data.Experience
-import com.example.mdpassignment6.util.APIService
+import com.example.mdpassignment6.data.*
+import com.example.mdpassignment6.util.RestApi
+import com.example.mdpassignment6.util.RestApiService
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.fragment_contact.*
-import kotlinx.android.synthetic.main.fragment_work.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -30,10 +28,15 @@ class ContactFragment : Fragment() {
     private val callid:Int = 1;
     private val smsid:Int = 2;
 
+    private var username = "";
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        parseAccountJSON();
+        val spf = context?.getSharedPreferences("myspf", Context.MODE_PRIVATE);
+        username = spf?.getString("username", "")!!;
+        getAccounts();
+
 //        //Test data
 //        contactList.add(Contact(R.drawable.ic_baseline_phone_24, "641-819-2508", "Mobile"));
 //        contactList.add(Contact(R.drawable.ic_baseline_email_24, "phucthaihg@gmail.com", "Email"));
@@ -70,37 +73,24 @@ class ContactFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_contact, container, false)
     }
 
-    private fun parseAccountJSON(){
-        // Create Retrofit
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://raw.githubusercontent.com")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-
-        // Create Service
-        val service = retrofit.create(APIService::class.java)
-        service.getAccounts().enqueue(object : Callback<List<Account>> {
-            override fun onResponse(
-                call: Call<List<Account>>,
-                response: Response<List<Account>>
-            ) {
-                val gson = GsonBuilder().setPrettyPrinting().create()
-                val prettyJson = gson.toJson(response.body())
-                Log.d("Pretty Printed JSON :", prettyJson)
-                val accounts = response.body()!!;
-                if(accounts != null){
-                    //Contacts
-                    contactList = accounts[0].contact as ArrayList<Contact>;
-                    fc_rv_contact.layoutManager = LinearLayoutManager(context);
-                    contactAdapter = MyContactAdapter(requireContext(), contactList);
+    private fun getAccounts(){
+        val apiService = RestApiService()
+        apiService.getAccounts (){
+            if(it != null){
+                val accounts = it.filter { account -> account.isActive };
+                for(account in accounts){
+                    if(!username.isNullOrEmpty() && account.email.equals(username)){
+                        //Contacts
+                        contactList = account.contact as ArrayList<Contact>;
+                        fc_rv_contact.layoutManager = LinearLayoutManager(context);
+                        contactAdapter = MyContactAdapter(requireContext(), contactList);
+                    }
                 }
+
                 fc_rv_contact.adapter = contactAdapter;
+            }else{
+                Log.e("RETROFIT_ERROR", "FAILURE TO GET ACCOUNT")
             }
-
-            override fun onFailure(call: Call<List<Account>>, t: Throwable) {
-                Log.e("RETROFIT_ERROR", "FAILURE TO LOAD JSON")
-            }
-
-        });
+        }
     }
 }
