@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
                     if(!username.isNullOrEmpty() && account.email.equals(username)){
                         account.isActive = false;
                         apiService.updateAccount(account) {
-                            if (it?.email != null) {
+                            if (it != null) {
                                 Log.e("RETROFIT_SUCCESS", "SUCCESS TO UPDATE ACCOUNT")
                                 var intent = Intent(this, LoginActivity::class.java);
                                 startActivity(intent);
