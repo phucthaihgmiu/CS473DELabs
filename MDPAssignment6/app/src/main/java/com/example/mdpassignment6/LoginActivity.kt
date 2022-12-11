@@ -19,72 +19,50 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 class LoginActivity : AppCompatActivity() {
-    var accounts:List<Account> = emptyList();
+//    var accounts:List<Account> = emptyList();
 
-    private var username = "";
+
+    private var accounts:List<Account> = ArrayList<Account>();
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+        showLastUser();
+
         getAccounts();
     }
 
-    fun clickSignIn(view: View) {
+    fun onLogin(view: View) {
         var username = etEmail.text.toString().trim();
         var password = etPwd.text.toString().trim();
 
         if (username.isNullOrEmpty() || username.isNullOrBlank()) {
-            Toast.makeText(this, "Please enter email", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Please enter your email", Toast.LENGTH_LONG).show();
+            return
         }
 
         if (password.isNullOrEmpty() || password.isNullOrBlank()) {
-            Toast.makeText(this, "Please enter password", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Please enter your password", Toast.LENGTH_LONG).show();
+            return
         }
 
-
-        var foundUser = false;
-        for (account in accounts) {
-            if (account.email.equals(username) && account.password.equals(password)) {
-                foundUser = true;
-
-                val spf = getSharedPreferences("myspf", Context.MODE_PRIVATE);
-                val spe = spf.edit();
-                spe.putString("username", account.email);
-                spe.apply();
-
-                //move to next activity
-                var intent = Intent(this, MainActivity::class.java);
-//              intent.putExtra("account", account);
-                startActivity(intent);
-
-                break;
-            } else {
-                Toast.makeText(this, "Invalid username / password", Toast.LENGTH_LONG).show();
-            }
-        }
-
-        if (!foundUser) {
+        if(!validateCredentials(username, password)){
             Toast.makeText(this, "User not found", Toast.LENGTH_LONG).show();
+        }else{
+            storeLastUser()
+            openMainActivity()
         }
-
 
     }
 
-    private fun defaultLastUser() {
-
-        val spf = applicationContext?.getSharedPreferences("myspf", Context.MODE_PRIVATE);
-        username = spf?.getString("username", "")!!;
-
-        if(!username.isNullOrBlank() && accounts != null && accounts.size > 0) {
-            var foundUser = false;
-            for (account in accounts) {
-                if (account.email.equals(username)) {
-                    etEmail.setText(account.email);
-                    etPwd.setText(account.password);
-                    break;
-                }
+    private fun validateCredentials(username:String, password:String):Boolean{
+        for (a in accounts) {
+            if (a.email.equals(username) && a.password.equals(password)) {
+                return true;
             }
         }
+        return false;
     }
 
     private fun getAccounts(){
@@ -92,10 +70,33 @@ class LoginActivity : AppCompatActivity() {
         apiService.getAccounts (){
             if(it != null){
                 accounts = it.filter { account ->  account.isActive};
-                defaultLastUser();
             }else{
                 Log.e("RETROFIT_ERROR", "FAILURE TO GET ACCOUNT")
             }
         }
+    }
+
+    private fun showLastUser() {
+
+        val prefUser = applicationContext?.getSharedPreferences("myspf", Context.MODE_PRIVATE);
+        val username = prefUser?.getString("username", "")!!;
+        val password = prefUser?.getString("password", "")!!;
+
+        etEmail.setText(username);
+        etPwd.setText(password);
+
+    }
+
+    private fun storeLastUser(){
+        val spf = getSharedPreferences("myspf", Context.MODE_PRIVATE);
+        val spe = spf.edit();
+        spe.putString("username", etEmail.text.toString());
+        spe.putString("password", etPwd.text.toString());
+        spe.apply();
+    }
+
+    private fun openMainActivity(){
+        var intent = Intent(this, MainActivity::class.java);
+        startActivity(intent);
     }
 }

@@ -2,6 +2,10 @@ package com.example.mdpassignment6.util
 
 import android.util.Log
 import com.example.mdpassignment6.data.Account
+import com.google.gson.Gson
+import okhttp3.MediaType
+import okhttp3.RequestBody
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,15 +29,22 @@ class RestApiService {
     }
 
     fun updateAccount(account: Account, onResult: (Account?) -> Unit){
+
+        val gson = Gson();
+        val requestBody: RequestBody = RequestBody.create(
+            MediaType.parse("application/json"),
+            gson.toJson(account).toString());
+
         val retrofit = ServiceBuilder.buildService(RestApi::class.java)
-        retrofit.updateAccount(account).enqueue(
+        retrofit.updateAccount(requestBody).enqueue(
             object : Callback<Account> {
                 override fun onFailure(call: Call<Account>, t: Throwable) {
+                    Log.e("onFailure", t.message.toString())
                     onResult(null)
                 }
                 override fun onResponse( call: Call<Account>, response: Response<Account>) {
-                    val account = response.body()
-                    onResult(account)
+                    Log.e("onResponse", account.toString())
+                    onResult(response.body())
                 }
             }
         )
